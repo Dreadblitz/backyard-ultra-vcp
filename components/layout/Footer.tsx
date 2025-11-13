@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { FaInstagram, FaFacebook, FaEnvelope } from 'react-icons/fa';
+import { FaInstagram, FaFacebook, FaYoutube, FaEnvelope } from 'react-icons/fa';
 import { RACE_INFO, SOCIAL_LINKS, NAV_ITEMS } from '@/lib/constants';
 
 export default function Footer() {
@@ -80,6 +80,15 @@ export default function Footer() {
                 aria-label="Facebook"
               >
                 <FaFacebook size={32} />
+              </a>
+              <a
+                href={SOCIAL_LINKS.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 transition-all hover:scale-110 hover:text-brand-cyan-neon"
+                aria-label="YouTube"
+              >
+                <FaYoutube size={32} />
               </a>
               <a
                 href={`mailto:${SOCIAL_LINKS.email}`}

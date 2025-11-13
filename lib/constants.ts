@@ -28,6 +28,7 @@ export const RACE_INFO = {
 export const SOCIAL_LINKS = {
   instagram: 'https://instagram.com/backyardultravcp',
   facebook: 'https://facebook.com/backyardultravcp',
+  youtube: 'https://youtube.com/@backyardultravcp',
   email: 'backyardultravcp@gmail.com',
 } as const;
 

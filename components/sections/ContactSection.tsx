@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import GradientText from '@/components/ui/GradientText';
 import Button from '@/components/ui/Button';
 import { SOCIAL_LINKS } from '@/lib/constants';
-import { FaInstagram, FaFacebook, FaEnvelope } from 'react-icons/fa';
+import { FaInstagram, FaFacebook, FaYoutube, FaEnvelope } from 'react-icons/fa';
 
 export default function ContactSection() {
   return (
@@ -123,6 +123,14 @@ export default function ContactSection() {
                       className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-black-bg/50 text-gray-300 transition-all hover:scale-110 hover:bg-brand-cyan-neon hover:text-brand-navy-dark"
                     >
                       <FaFacebook size={24} />
+                    </a>
+                    <a
+                      href={SOCIAL_LINKS.youtube}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-black-bg/50 text-gray-300 transition-all hover:scale-110 hover:bg-brand-cyan-neon hover:text-brand-navy-dark"
+                    >
+                      <FaYoutube size={24} />
                     </a>
                     <a
                       href={`mailto:${SOCIAL_LINKS.email}`}
