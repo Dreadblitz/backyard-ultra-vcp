@@ -39,7 +39,11 @@ export default function Header() {
       <nav className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-3">
+          <button
+            onClick={() => scrollToSection('#hero')}
+            className="flex items-center gap-3 cursor-pointer transition-opacity hover:opacity-80"
+            aria-label="Ir al inicio"
+          >
             <div className="relative h-12 w-12 animate-glow rounded-full">
               <Image
                 src="/logos/logo_circular.jpg"
@@ -52,7 +56,7 @@ export default function Header() {
             <span className="hidden text-xl font-bold text-white md:block">
               Backyard Ultra <span className="text-brand-orange-ultra">VCP</span>
             </span>
-          </div>
+          </button>
 
           {/* Desktop Navigation */}
           <div className="hidden items-center gap-8 md:flex">

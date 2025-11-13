@@ -30,7 +30,7 @@ export default function NightExperience() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-gradient-night py-20">
+    <section id="night" className="relative overflow-hidden bg-gradient-night py-20">
       {/* Background decorative elements */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute left-1/4 top-1/4 h-64 w-64 rounded-full bg-brand-cyan-neon blur-3xl"></div>
