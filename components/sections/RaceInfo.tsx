@@ -44,7 +44,7 @@ export default function RaceInfo() {
       title: 'Requisitos',
       content: [
         'Mayores de 18 años',
-        'Apto médico para ultra running',
+        'Apto médico y deslinde de responsabilidades',
         'Linterna frontal obligatoria',
       ],
       color: 'text-brand-magenta',

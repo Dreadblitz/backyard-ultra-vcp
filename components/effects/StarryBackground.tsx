@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, memo } from 'react';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
 import type { Engine, ISourceOptions } from '@tsparticles/engine';
 
-export default function StarryBackground() {
+function StarryBackground() {
   useEffect(() => {
     initParticlesEngine(async (engine: Engine) => {
       await loadSlim(engine);
@@ -63,3 +63,5 @@ export default function StarryBackground() {
 
   return <Particles id="tsparticles" options={options} className="absolute inset-0" />;
 }
+
+export default memo(StarryBackground);
