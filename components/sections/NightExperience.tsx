@@ -15,7 +15,7 @@ export default function NightExperience() {
     {
       icon: <HiLightBulb size={32} />,
       title: 'Recorrido Iluminado',
-      description: 'Circuito señalizado con luces LED para máxima seguridad',
+      description: 'Circuito iluminado para máxima seguridad',
     },
     {
       icon: <HiSparkles size={32} />,
@@ -24,8 +24,8 @@ export default function NightExperience() {
     },
     {
       icon: <HiMapPin size={32} />,
-      title: 'Vista al Lago',
-      description: 'Recorrido con vistas al Lago San Roque iluminado',
+      title: 'Vista al Lago y a las Sierras',
+      description: 'Recorrido con vistas al Lago San Roque, sierras chicas y sierras grandes',
     },
   ];
 
@@ -69,7 +69,6 @@ export default function NightExperience() {
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-black-bg/80 to-transparent"></div>
             </div>
           </motion.div>
 
@@ -109,9 +108,9 @@ export default function NightExperience() {
               transition={{ duration: 1, delay: 0.6 }}
               className="mt-8 text-center lg:text-left"
             >
-              <p className="text-2xl font-medium italic text-gray-300">
+              <p className="text-2xl font-bold text-gray-300">
                 <span className="text-brand-cyan-neon">&ldquo;</span>
-                La única carrera que comienza cuando el resto termina
+                No hay metas, no hay rivales, <span className="text-brand-orange-ultra">SOLO VOS</span>
                 <span className="text-brand-cyan-neon">&rdquo;</span>
               </p>
             </motion.div>

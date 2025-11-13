@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import GradientText from '@/components/ui/GradientText';
-import { HiDocumentText, HiMap, HiChartBar, HiCamera } from 'react-icons/hi2';
+import { HiDocumentText, HiMap, HiChartBar, HiCamera, HiClipboardDocumentList, HiSparkles } from 'react-icons/hi2';
 
 export default function ComingSoonSection() {
   const comingSoonCards = [
@@ -35,6 +35,20 @@ export default function ComingSoonSection() {
       description: 'Revive momentos de ediciones pasadas',
       detail: 'Fotos y videos de la experiencia',
       color: 'text-brand-magenta',
+    },
+    {
+      icon: <HiClipboardDocumentList size={48} />,
+      title: 'Reglamento',
+      description: 'Reglas oficiales de la carrera',
+      detail: 'Normativa completa y requisitos detallados',
+      color: 'text-brand-pink-bright',
+    },
+    {
+      icon: <HiSparkles size={48} />,
+      title: 'Sponsors',
+      description: 'Nuestros colaboradores y patrocinadores',
+      detail: '¿Querés ser parte? Contactanos para sumarte',
+      color: 'text-brand-coral-soft',
     },
   ];
 

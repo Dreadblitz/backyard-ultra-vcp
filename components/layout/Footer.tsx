@@ -113,7 +113,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="text-brand-cyan-neon hover:underline"
             >
-              Dreadblitz
+              @caluiov
             </a>
           </p>
         </div>

@@ -13,7 +13,7 @@ export default function AboutSection() {
       title: '6.706 km',
       subtitle: 'cada hora',
       description:
-        'Cada corredor debe completar un loop de 6.706 km cada hora en punto. Si no llegas a tiempo, quedas eliminado.',
+        'Cada corredor debe completar 6.706 km cada hora. Tu velocidad define tu descanso: terminas en 45 minutos, descansas 15. Tu estrategia, tu carrera. Si no llegas a tiempo, quedas eliminado.',
       color: 'text-brand-cyan-neon',
     },
     {

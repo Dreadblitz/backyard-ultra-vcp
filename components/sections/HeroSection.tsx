@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import GradientText from '@/components/ui/GradientText';
 import Button from '@/components/ui/Button';
@@ -9,11 +10,20 @@ import { RACE_INFO } from '@/lib/constants';
 import { HiChevronDown } from 'react-icons/hi';
 
 export default function HeroSection() {
+  const [inscriptionText, setInscriptionText] = useState('Inscripciones');
+
   const scrollToNext = () => {
     const nextSection = document.querySelector('#about');
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleInscriptionClick = () => {
+    setInscriptionText('Próximamente');
+    setTimeout(() => {
+      setInscriptionText('Inscripciones');
+    }, 2500);
   };
 
   return (
@@ -30,7 +40,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="mb-8"
+          className="mb-12 md:mb-16"
         >
           <div className="relative mx-auto h-48 w-48 md:h-64 md:w-64">
             <Image
@@ -48,7 +58,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          <h1 className="mb-4 text-5xl font-bold md:text-7xl lg:text-8xl">
+          <h1 className="mb-4 text-4xl font-bold md:text-6xl lg:text-7xl">
             <GradientText className="glow-neon">BACKYARD ULTRA</GradientText>
           </h1>
 
@@ -56,12 +66,8 @@ export default function HeroSection() {
             Villa Carlos Paz
           </h2>
 
-          <p className="mx-auto mb-4 max-w-2xl text-xl text-gray-300 md:text-2xl">
-            La primera carrera <span className="text-brand-cyan-neon font-semibold">nocturna</span> de Argentina
-          </p>
-
-          <p className="mx-auto mb-12 max-w-3xl text-lg text-gray-400">
-            {RACE_INFO.description}
+          <p className="mx-auto mb-12 max-w-3xl text-xl text-gray-300 md:text-2xl">
+            La primera carrera de Backyard Ultra con <span className="text-brand-cyan-neon font-semibold">inicio nocturno</span>. Una experiencia única bajo las estrellas.
           </p>
 
           {/* Info Cards */}
@@ -108,10 +114,20 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 1.2 }}
             className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
           >
-            <Button size="lg" glow>
-              Próximas Inscripciones
+            <Button size="lg" glow onClick={handleInscriptionClick}>
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={inscriptionText}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {inscriptionText}
+                </motion.span>
+              </AnimatePresence>
             </Button>
-            <Button size="lg" variant="ghost">
+            <Button size="lg" variant="ghost" onClick={scrollToNext}>
               Más Información
             </Button>
           </motion.div>

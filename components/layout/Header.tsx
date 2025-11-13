@@ -40,7 +40,7 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div className="relative h-12 w-12">
+            <div className="relative h-12 w-12 animate-glow rounded-full">
               <Image
                 src="/logos/logo_circular.jpg"
                 alt="Backyard Ultra VCP"

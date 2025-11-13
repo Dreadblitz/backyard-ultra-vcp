@@ -16,7 +16,7 @@ export default function RaceInfo() {
     {
       icon: <HiCalendar size={40} />,
       title: 'Fecha y Hora',
-      content: ['Fecha: Por confirmar', `Inicio: ${RACE_INFO.startTime} hs`, 'Largada cada hora en punto'],
+      content: ['Fecha: Viernes 20 de noviembre de 2026 (FERIADO)', `Inicio: ${RACE_INFO.startTime} hs`, 'Largada cada hora en punto'],
       color: 'text-brand-cyan-neon',
     },
     {

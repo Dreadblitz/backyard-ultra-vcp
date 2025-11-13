@@ -21,7 +21,7 @@ export const RACE_INFO = {
   distance: '6.706',
   startTime: '21:00',
   description:
-    'La primera carrera de Backyard Ultra nocturna de Argentina. Una experiencia única bajo las estrellas.',
+    'La primera carrera de Backyard Ultra con inicio nocturno de Argentina. Una experiencia única bajo las estrellas.',
 } as const;
 
 // Social Media Links

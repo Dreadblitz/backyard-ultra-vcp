@@ -64,9 +64,10 @@ body {
 /* Glow effect utility */
 .glow-neon {
   text-shadow:
-    0 0 10px var(--cyan-neon),
-    0 0 20px var(--cyan-neon),
-    0 0 30px var(--cyan-neon);
+    0 0 8px rgba(0, 217, 255, 0.8),
+    0 0 15px rgba(0, 217, 255, 0.6),
+    0 0 25px rgba(0, 217, 255, 0.3),
+    0 0 35px rgba(0, 217, 255, 0.2);
 }
 
 .glow-purple {
