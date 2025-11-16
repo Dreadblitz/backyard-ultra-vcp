@@ -117,7 +117,7 @@ export default function Footer() {
           <p className="mt-2 text-xs text-gray-500">
             Desarrollado con 💜 por{' '}
             <a
-              href="https://github.com/Dreadblitz"
+              href="https://www.instagram.com/caluiov/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-brand-cyan-neon hover:underline"

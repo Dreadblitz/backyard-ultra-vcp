@@ -18,10 +18,10 @@ export const RACE_INFO = {
   name: 'Backyard Ultra Villa Carlos Paz',
   shortName: 'Backyard Ultra VCP',
   location: 'Villa Carlos Paz, Córdoba',
-  distance: '6.706',
+  distance: '6,7',
   startTime: '21:00',
   description:
-    'La primera carrera de Backyard Ultra con inicio nocturno de Argentina. Una experiencia única bajo las estrellas.',
+    'La primera carrera de Backyard Ultra de Argentina con inicio nocturno. Una experiencia única bajo las estrellas.',
 } as const;
 
 // Social Media Links

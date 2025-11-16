@@ -10,10 +10,10 @@ export default function AboutSection() {
   const features = [
     {
       icon: <HiClock size={48} />,
-      title: '6.706 km',
+      title: '6,7 km',
       subtitle: 'cada hora',
       description:
-        'Cada corredor debe completar 6.706 km cada hora. Tu velocidad define tu descanso: terminas en 45 minutos, descansas 15. Tu estrategia, tu carrera. Si no llegas a tiempo, quedas eliminado.',
+        'Cada corredor debe completar 6,7 km cada hora. Tu velocidad define tu descanso: terminas en 45 minutos, descansas 15. Tu estrategia, tu carrera. Si no llegas a tiempo, quedas eliminado.',
       color: 'text-brand-cyan-neon',
     },
     {

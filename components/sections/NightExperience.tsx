@@ -15,7 +15,7 @@ export default function NightExperience() {
     {
       icon: <HiLightBulb size={32} />,
       title: 'Recorrido Iluminado',
-      description: 'Circuito iluminado para máxima seguridad',
+      description: 'Gran parte del circuito es iluminado',
     },
     {
       icon: <HiSparkles size={32} />,

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: '%s | Backyard Ultra VCP',
   },
   description:
-    'La primera carrera de Backyard Ultra nocturna de Argentina. 6.706 km cada hora, inicio 21:00 hs en Villa Carlos Paz, Córdoba. Una experiencia única bajo las estrellas.',
+    'La primera carrera de Backyard Ultra de Argentina con inicio nocturno. 6,7 km cada hora, inicio 21:00 hs en Villa Carlos Paz, Córdoba. Una experiencia única bajo las estrellas.',
   keywords: [
     'backyard ultra',
     'carrera nocturna',

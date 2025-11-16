@@ -67,7 +67,7 @@ export default function HeroSection() {
           </h2>
 
           <p className="mx-auto mb-12 max-w-3xl text-xl text-gray-300 md:text-2xl">
-            La primera carrera de Backyard Ultra con <span className="text-brand-cyan-neon font-semibold">inicio nocturno</span>. Una experiencia única bajo las estrellas.
+            La primera carrera de Backyard Ultra de Argentina con <span className="text-brand-cyan-neon font-semibold">inicio nocturno</span>. Una experiencia única bajo las estrellas.
           </p>
 
           {/* Info Cards */}
