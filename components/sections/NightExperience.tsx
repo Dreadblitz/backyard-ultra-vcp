@@ -67,7 +67,7 @@ export default function NightExperience() {
                 src="/logos/A2.jpg"
                 alt="Villa Carlos Paz de noche"
                 fill
-                className="object-cover"
+                className="object-cover object-[20%_center] md:object-center"
               />
             </div>
           </motion.div>
