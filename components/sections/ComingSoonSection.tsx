@@ -113,7 +113,7 @@ export default function ComingSoonSection() {
               Mantente Informado
             </h3>
             <p className="mb-6 text-gray-400">
-              Suscríbete para recibir notificaciones sobre inscripciones, novedades y más
+              Suscríbete para recibir notificaciones sobre inscripciones, novedades y mucho más
             </p>
             <form className="flex flex-col gap-4 sm:flex-row">
               <input
