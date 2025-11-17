@@ -1,12 +1,69 @@
 'use client';
 
+import { useState, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import GradientText from '@/components/ui/GradientText';
 import Button from '@/components/ui/Button';
 import { SOCIAL_LINKS } from '@/lib/constants';
 import { FaInstagram, FaFacebook, FaYoutube, FaEnvelope } from 'react-icons/fa';
 
+type FormStatus = 'idle' | 'loading' | 'success' | 'error';
+
 export default function ContactSection() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const [status, setStatus] = useState<FormStatus>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `Nuevo mensaje desde Backyard Ultra VCP - ${formData.name}`,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setStatus('idle');
+        }, 5000);
+      } else {
+        throw new Error(result.message || 'Error al enviar el mensaje');
+      }
+    } catch (error) {
+      setStatus('error');
+      setErrorMessage(
+        error instanceof Error ? error.message : 'Error al enviar el mensaje. Por favor, intenta nuevamente.'
+      );
+      // Reset error message after 5 seconds
+      setTimeout(() => {
+        setStatus('idle');
+        setErrorMessage('');
+      }, 5000);
+    }
+  };
+
   return (
     <section id="contact" className="bg-brand-navy-dark py-20">
       <div className="container mx-auto px-4">
@@ -37,7 +94,7 @@ export default function ContactSection() {
             <h3 className="mb-6 text-2xl font-bold text-white">
               Envíanos un Mensaje
             </h3>
-            <form className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="name" className="mb-2 block text-sm text-gray-300">
                   Nombre
@@ -45,7 +102,14 @@ export default function ContactSection() {
                 <input
                   type="text"
                   id="name"
-                  className="w-full rounded-lg border border-brand-cyan-neon/30 bg-brand-black-bg/50 px-4 py-3 text-white focus:border-brand-cyan-neon focus:outline-none"
+                  name="name"
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
+                  required
+                  disabled={status === 'loading'}
+                  className="w-full rounded-lg border border-brand-cyan-neon/30 bg-brand-black-bg/50 px-4 py-3 text-white focus:border-brand-cyan-neon focus:outline-none disabled:opacity-50"
                   placeholder="Tu nombre"
                 />
               </div>
@@ -56,7 +120,14 @@ export default function ContactSection() {
                 <input
                   type="email"
                   id="email"
-                  className="w-full rounded-lg border border-brand-cyan-neon/30 bg-brand-black-bg/50 px-4 py-3 text-white focus:border-brand-cyan-neon focus:outline-none"
+                  name="email"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                  required
+                  disabled={status === 'loading'}
+                  className="w-full rounded-lg border border-brand-cyan-neon/30 bg-brand-black-bg/50 px-4 py-3 text-white focus:border-brand-cyan-neon focus:outline-none disabled:opacity-50"
                   placeholder="tu@email.com"
                 />
               </div>
@@ -66,14 +137,57 @@ export default function ContactSection() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   rows={5}
-                  className="w-full rounded-lg border border-brand-cyan-neon/30 bg-brand-black-bg/50 px-4 py-3 text-white focus:border-brand-cyan-neon focus:outline-none"
+                  value={formData.message}
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
+                  required
+                  disabled={status === 'loading'}
+                  className="w-full rounded-lg border border-brand-cyan-neon/30 bg-brand-black-bg/50 px-4 py-3 text-white focus:border-brand-cyan-neon focus:outline-none disabled:opacity-50"
                   placeholder="Tu mensaje..."
                 ></textarea>
               </div>
-              <Button type="submit" size="lg" className="w-full">
-                Enviar Mensaje
+
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full"
+                disabled={status === 'loading'}
+              >
+                {status === 'loading' ? 'Enviando...' : 'Enviar Mensaje'}
               </Button>
+
+              {/* Success Message */}
+              {status === 'success' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="rounded-lg bg-green-500/20 border border-green-500/30 p-4 text-center"
+                >
+                  <p className="text-green-400 font-semibold">
+                    ✓ Mensaje enviado exitosamente
+                  </p>
+                  <p className="mt-1 text-sm text-green-300">
+                    Te responderemos pronto a tu email
+                  </p>
+                </motion.div>
+              )}
+
+              {/* Error Message */}
+              {status === 'error' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="rounded-lg bg-red-500/20 border border-red-500/30 p-4 text-center"
+                >
+                  <p className="text-red-400 font-semibold">✗ Error al enviar</p>
+                  <p className="mt-1 text-sm text-red-300">
+                    {errorMessage || 'Por favor, intenta nuevamente'}
+                  </p>
+                </motion.div>
+              )}
             </form>
           </motion.div>
 

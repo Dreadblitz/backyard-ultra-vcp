@@ -1,12 +1,18 @@
 'use client';
 
+import { useState, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import GradientText from '@/components/ui/GradientText';
 import { HiDocumentText, HiMap, HiChartBar, HiCamera, HiClipboardDocumentList, HiSparkles } from 'react-icons/hi2';
 
+type FormStatus = 'idle' | 'loading' | 'success' | 'error';
+
 export default function ComingSoonSection() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<FormStatus>('idle');
+
   const comingSoonCards = [
     {
       icon: <HiDocumentText size={48} />,
@@ -18,7 +24,7 @@ export default function ComingSoonSection() {
     {
       icon: <HiMap size={48} />,
       title: 'Recorrido',
-      description: 'Conoce el circuito de 6,7 km',
+      description: 'Conoce el circuito de 6.706 km',
       detail: 'Mapa interactivo con elevación y puntos clave',
       color: 'text-brand-orange-ultra',
     },
@@ -51,6 +57,44 @@ export default function ComingSoonSection() {
       color: 'text-brand-coral-soft',
     },
   ];
+
+  const handleNewsletterSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('loading');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+          email: email,
+          subject: 'Nueva suscripción al newsletter - Backyard Ultra VCP',
+          message: `Nueva suscripción al newsletter desde: ${email}`,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus('success');
+        setEmail('');
+        setTimeout(() => {
+          setStatus('idle');
+        }, 5000);
+      } else {
+        throw new Error(result.message || 'Error al suscribirse');
+      }
+    } catch (error) {
+      setStatus('error');
+      setTimeout(() => {
+        setStatus('idle');
+      }, 5000);
+    }
+  };
 
   return (
     <section className="bg-brand-black-bg py-20">
@@ -115,16 +159,41 @@ export default function ComingSoonSection() {
             <p className="mb-6 text-gray-400">
               Suscríbete para recibir notificaciones sobre inscripciones, novedades y mucho más
             </p>
-            <form className="flex flex-col gap-4 sm:flex-row">
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col gap-4 sm:flex-row">
               <input
                 type="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                disabled={status === 'loading'}
                 placeholder="tu@email.com"
-                className="glass flex-1 rounded-lg border border-brand-cyan-neon/30 bg-transparent px-4 py-3 text-white placeholder-gray-500 focus:border-brand-cyan-neon focus:outline-none"
+                className="glass flex-1 rounded-lg border border-brand-cyan-neon/30 bg-transparent px-4 py-3 text-white placeholder-gray-500 focus:border-brand-cyan-neon focus:outline-none disabled:opacity-50"
               />
-              <Button type="submit" size="md">
-                Notificarme
+              <Button type="submit" size="md" disabled={status === 'loading'}>
+                {status === 'loading' ? 'Enviando...' : 'Notificarme'}
               </Button>
             </form>
+
+            {/* Success/Error Messages */}
+            {status === 'success' && (
+              <motion.p
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mt-4 text-green-400 font-semibold"
+              >
+                ✓ ¡Suscripción exitosa! Te notificaremos sobre novedades
+              </motion.p>
+            )}
+            {status === 'error' && (
+              <motion.p
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mt-4 text-red-400 font-semibold"
+              >
+                ✗ Error al suscribirse. Por favor, intenta nuevamente
+              </motion.p>
+            )}
           </div>
         </motion.div>
       </div>
