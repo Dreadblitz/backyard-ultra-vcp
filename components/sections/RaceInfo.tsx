@@ -110,10 +110,10 @@ export default function RaceInfo() {
             </h3>
             <div className="grid gap-4 md:grid-cols-4">
               {[
-                { time: '18:00', event: 'Acreditaciones' },
-                { time: '20:30', event: 'Charla técnica' },
-                { time: '21:00', event: '🏃 Primera vuelta' },
-                { time: '22:00', event: '🏃 Segunda vuelta' },
+                { time: '17:00', event: 'Acreditaciones' },
+                { time: '19:30', event: 'Charla técnica' },
+                { time: '20:00', event: '🏃 Primera vuelta' },
+                { time: '21:00', event: '🏃 Segunda vuelta' },
               ].map((item, index) => (
                 <div key={index} className="text-center">
                   <p className="mb-2 text-2xl font-bold text-brand-cyan-neon">

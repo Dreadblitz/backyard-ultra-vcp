@@ -9,7 +9,7 @@ export default function NightExperience() {
   const highlights = [
     {
       icon: <HiMoon size={32} />,
-      title: 'Inicio: 21:00 hs',
+      title: 'Inicio: 20:00 hs',
       description: 'Único en Argentina - Todas las demás carreras comienzan de día',
     },
     {
