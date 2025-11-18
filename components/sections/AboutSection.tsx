@@ -35,7 +35,7 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="about" className="relative bg-brand-black-bg py-20">
+    <section id="about" className="relative bg-brand-black-bg pt-20 pb-4">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
