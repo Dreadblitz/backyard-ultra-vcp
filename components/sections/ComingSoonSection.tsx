@@ -24,7 +24,7 @@ export default function ComingSoonSection() {
     {
       icon: <HiMap size={48} />,
       title: 'Recorrido',
-      description: 'Conoce el circuito de 6.706 km',
+      description: 'Conoce el circuito de 6,7 km',
       detail: 'Mapa interactivo con elevación y puntos clave',
       color: 'text-brand-orange-ultra',
     },
